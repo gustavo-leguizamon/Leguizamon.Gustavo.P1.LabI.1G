@@ -7,13 +7,19 @@ int mostrarTipos(eTipo tipos[], int lenTipos){
 	int lenColumns = 2;
 	char columns[2][31] = { "ID", "TIPO" };
 	int lengths[2] = { 6, 22 };
+	int hay = 0;
 
 	if (tipos != NULL && lenTipos > 0){
 		printHeader(columns, lengths, lenColumns);
 		for (int i = 0; i < lenTipos; i++){
 			printf("| %4d | %-20s |\n", tipos[i].id, tipos[i].descripcion);
+			printFooter(lengths, lenColumns);
+			hay = 1;
 		}
-		printFooter(lengths, lenColumns);
+
+		if (!hay){
+			printf("No hay tipos par mostrar\n");
+		}
 
 		success = 1;
 	}

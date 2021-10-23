@@ -1,19 +1,40 @@
 
 #include "aerolinea.h"
 
+int inicializarAerolineas(eAerolinea aerolineas[], int lenAerolineas){
+	int exito = 0;
+
+	if (aerolineas != NULL && lenAerolineas > 0){
+		for (int i = 0; i < lenAerolineas; i++){
+			aerolineas[i].isEmpty = 0;
+		}
+
+		exito = 1;
+	}
+
+	return exito;
+}
 
 int mostrarAerolineas(eAerolinea aerolineas[], int lenAerolineas){
 	int success = 0;
 	int lenColumns = 2;
 	char columns[2][31] = { "ID", "AEROLINEA" };
 	int lengths[2] = { 6, 22 };
+	int hay = 0;
 
 	if (aerolineas != NULL && lenAerolineas > 0){
 		printHeader(columns, lengths, lenColumns);
 		for (int i = 0; i < lenAerolineas; i++){
-			printf("| %4d | %-20s |\n", aerolineas[i].id, aerolineas[i].descripcion);
+			if (!aerolineas[i].isEmpty){
+				printf("| %4d | %-20s |\n", aerolineas[i].id, aerolineas[i].descripcion);
+				printFooter(lengths, lenColumns);
+				hay = 1;
+			}
 		}
-		printFooter(lengths, lenColumns);
+
+		if (!hay){
+			printf("No hay aerolineas par mostrar\n");
+		}
 
 		success = 1;
 	}

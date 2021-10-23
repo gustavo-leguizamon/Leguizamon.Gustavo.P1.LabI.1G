@@ -5,12 +5,14 @@
 #include "avion.h"
 #include "tipo.h"
 #include "destino.h"
+#include "vuelo.h"
 #include "menu.h"
 
 #define LEN_AEROLINEAS 5
 #define LEN_TIPOS      4
 #define LEN_DESTINOS   4
 #define LEN_AVIONES    1000
+#define LEN_VUELOS     1000
 
 
 
@@ -41,22 +43,13 @@ int main(void) {
 	};
 
 	eAvion aviones[LEN_AVIONES];
+	eVuelo vuelos[LEN_VUELOS];
 	int nextIdAvion = 2000;
 	int seguir = 1;
 
-	/*
-	if (!inicializarPersonas(listaPersonas, TAM)){
-		printf("No se pudo inicializar el personas\n");
-	}
-	if (!inicializarAlmuerzos(almuerzos, LEN_ALMUERZOS)){
-		printf("No se pudo inicializar el almuerzos\n");
-	}
-	*/
-
-
-	//hardcodePersons(listaPersonas, TAM, 4, &nextId);
-
-	if (inicializarAviones(aviones, LEN_AVIONES)){
+	if (inicializarAviones(aviones, LEN_AVIONES) &&
+		inicializarVuelos(vuelos, LEN_VUELOS) &&
+		inicializarAerolineas(aerolineas, LEN_AEROLINEAS)){
 		do{
 			//system("clear");
 

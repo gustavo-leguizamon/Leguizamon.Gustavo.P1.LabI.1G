@@ -1,5 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include <string.h>
 
 #include "output.h"
 
@@ -9,10 +10,12 @@
 typedef struct {
 	int id;
 	char descripcion[20];
+	int isEmpty;
 } eAerolinea;
 
 #endif /* AEROLINEA_H_ */
 
+int inicializarAerolineas(eAerolinea aerolineas[], int lenAerolineas);
 
 int mostrarAerolineas(eAerolinea aerolineas[], int lenAerolineas);
 

@@ -190,15 +190,22 @@ int mostrarAviones(eAvion aviones[], int lenAviones, eAerolinea aerolineas[], in
 	int success = 0;
 	int lenColumns = 4;
 	char columns[4][31] = { "ID", "AEROLINEA", "TIPO", "CAPACIDAD" };
-	int lengths[4] = { 6, 22, 22, 5 };
+	int lengths[4] = { 6, 22, 22, 11 };
+	int hay = 0;
 
 	if (aviones != NULL && lenAviones > 0 && aerolineas != NULL && lenAerolineas > 0 && tipos != NULL && lenTipos > 0){
 		printHeader(columns, lengths, lenColumns);
 		for (int i = 0; i < lenAviones; i++){
-			//printf("| %4d | %-20s | %-20s | %3d |\n", aviones[i].id, aviones[i].descripcion);
-			mostrarAvion(aviones[i], aerolineas, lenAerolineas, tipos, lenTipos);
+			if (!aviones[i].isEmpty){
+				mostrarAvion(aviones[i], aerolineas, lenAerolineas, tipos, lenTipos);
+				printFooter(lengths, lenColumns);
+				hay = 1;
+			}
 		}
-		printFooter(lengths, lenColumns);
+
+		if (!hay){
+			printf("No hay aviones par mostrar\n");
+		}
 
 		success = 1;
 	}

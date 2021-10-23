@@ -19,3 +19,4 @@ void mostrarDestino(eDestino destino);
 
 int mostrarDestinos(eDestino destinos[], int lenDestinos);
 
+int validarIdDestino(eDestino destinos[], int lenDestinos, int id);
