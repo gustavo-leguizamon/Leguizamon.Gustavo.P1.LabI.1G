@@ -19,6 +19,13 @@ typedef struct {
 
 //int hardcodeDestinos(eDestino destinos[], int lenDestinos, int cantidad, int* pId);
 
+/**
+ * @brief Inicializa todos los elementos de destinos
+ *
+ * @param destinos
+ * @param lenDestinos
+ * @return
+ */
 int inicializarDestinos(eDestino destinos[], int lenDestinos);
 
 void mostrarDestino(eDestino destino);

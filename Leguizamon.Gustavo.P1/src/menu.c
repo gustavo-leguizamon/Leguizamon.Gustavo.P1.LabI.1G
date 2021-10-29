@@ -17,6 +17,9 @@ int menu(){
 	printf("%d-Listar destinos\n", optListarDestinos);
 	printf("%d-Alta vuelo\n", optAltaVuelo);
 	printf("%d-Listar vuelos\n", optListarVuelos);
+
+	printf("%d-Mostrar aviones por ID\n", optMostarAvionesPorId);
+
 	printf("%d-Salir\n\n", optSalirMainMenu);
 	getInt("Ingrese una opcion: ", &opcion);
 

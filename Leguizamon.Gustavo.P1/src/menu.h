@@ -11,7 +11,10 @@ enum optionsMenu{
 	optListarDestinos,
 	optAltaVuelo,
 	optListarVuelos,
-	optSalirMainMenu = 20
+
+	optMostarAvionesPorId,
+
+	optSalirMainMenu = 100
 };
 
 

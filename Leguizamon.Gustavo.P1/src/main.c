@@ -122,6 +122,9 @@ int main(void) {
 				case optListarVuelos:
 					mostrarVuelos(vuelos, LEN_VUELOS, aviones, LEN_AVIONES, aerolineas, LEN_AEROLINEAS, tipos, LEN_TIPOS, destinos, LEN_DESTINOS);
 					break;
+				case optMostarAvionesPorId:
+					mostrarVuelos(vuelos, LEN_VUELOS, aviones, LEN_AVIONES, aerolineas, LEN_AEROLINEAS, tipos, LEN_TIPOS, destinos, LEN_DESTINOS);
+					break;
 				case optSalirMainMenu:
 					seguir = 0;
 					break;
