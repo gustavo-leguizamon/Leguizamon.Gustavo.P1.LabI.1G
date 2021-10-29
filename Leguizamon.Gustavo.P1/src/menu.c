@@ -18,7 +18,12 @@ int menu(){
 	printf("%d-Alta vuelo\n", optAltaVuelo);
 	printf("%d-Listar vuelos\n", optListarVuelos);
 
-	printf("%d-Mostrar aviones por ID\n", optMostarAvionesPorId);
+	printf("%d-Mostrar aviones por Aerolinea\n", optMostarAvionesPorAerolinea);
+	printf("%d-Mostrar aviones por Tipo\n", optMostarAvionesPorTipo);
+	printf("%d-Mostrar porcentaje de aviones JET por aerolinea\n", optMostrarPorcentajeAvionesJetAerolineas);
+
+
+	printf("%d-Mostrar aerolinea con menos aviones\n", optMostrarAerolineaConMenosAviones);
 
 	printf("%d-Salir\n\n", optSalirMainMenu);
 	getInt("Ingrese una opcion: ", &opcion);

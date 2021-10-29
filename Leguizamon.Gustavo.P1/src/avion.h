@@ -147,6 +147,21 @@ int ordenarAviones(eAvion aviones[], int lenAviones, eAerolinea aerolineas[], in
 
 
 
+
+//INFORMES
+int mostrarAvionesPorAerolinea(eAvion aviones[], int lenAviones, eAerolinea aerolineas[], int lenAerolineas, eTipo tipos[], int lenTipos);
+
+int mostrarAvionesPorTipo(eAvion aviones[], int lenAviones, eAerolinea aerolineas[], int lenAerolineas, eTipo tipos[], int lenTipos);
+
+int mostrarPorcentajeAvionesPorAerolinea(eAvion aviones[], int lenAviones, eAerolinea aerolineas[], int lenAerolineas, int idAerolinea, int idTipo);
+
+int mostrarPorcentajeAvionesJetAerolineas(eAvion aviones[], int lenAviones, eAerolinea aerolineas[], int lenAerolineas);
+
+
+int mostrarAerolineaConMenosAviones(eAvion aviones[], int lenAviones, eAerolinea aerolineas[], int lenAerolineas);
+
+
+
 //VALIDACIONES
 
 /**

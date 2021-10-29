@@ -1,6 +1,7 @@
 #include "avion.h"
 
 #include "data.h"
+#include "swap.h"
 
 
 int hardcodeAviones(eAvion aviones[], int lenAviones, int cantidad, int* pId){
@@ -228,6 +229,8 @@ int mostrarAviones(eAvion aviones[], int lenAviones, eAerolinea aerolineas[], in
 	int hay = 0;
 
 	if (aviones != NULL && lenAviones > 0 && aerolineas != NULL && lenAerolineas > 0 && tipos != NULL && lenTipos > 0){
+		ordenarAviones(aviones, lenAviones, aerolineas, lenAerolineas, tipos, lenTipos);
+
 		printHeader(columns, lengths, lenColumns);
 		for (int i = 0; i < lenAviones; i++){
 			if (!aviones[i].isEmpty){
@@ -250,16 +253,31 @@ int mostrarAviones(eAvion aviones[], int lenAviones, eAerolinea aerolineas[], in
 	return success;
 }
 
-/*
-int ordenarAviones(eAvion aviones[], int lenAviones){
-	int exito = 0;
 
-	if (aviones != NULL && lenAviones > 0){
+int ordenarAviones(eAvion aviones[], int lenAviones, eAerolinea aerolineas[], int lenAerolineas, eTipo tipos[], int lenTipos){
+	int exito = 0;
+	char aerolineaAviones[lenAviones][20];
+	char tipoAviones[lenAviones][20];
+	eAvion aux;
+
+
+	if (aviones != NULL && lenAviones > 0 && aerolineas != NULL && lenAerolineas > 0 && tipos != NULL && lenTipos > 0){
+		for (int i = 0; i < lenAviones; i++){
+			if (!aviones[i].isEmpty){
+				cargarDescripcionAerolinea(aerolineas, lenAerolineas, aviones[i].idAerolinea, aerolineaAviones[i]);
+				cargarDescripcionTipo(tipos, lenTipos, aviones[i].idTipo, tipoAviones[i]);
+			}
+		}
+
 		for (int i = 0; i < lenAviones - 1; i++){
 			for (int j = i + 1; j < lenAviones; j++){
-				if ((aviones[i].sexo > aviones[j].sexo) ||
-					(aviones[i].sexo == aviones[j].sexo && strcmp(aviones[i].nombre, aviones[j].nombre) > 0)){
-					swapPersona(&aviones[i], &aviones[j]);
+				if (!aviones[i].isEmpty){
+					if ((strcmp(aerolineaAviones[i], aerolineaAviones[j]) > 0) ||
+						(strcmp(aerolineaAviones[i], aerolineaAviones[j]) == 0 && strcmp(tipoAviones[i], tipoAviones[j]) < 0)){
+						aux = aviones[i];
+						aviones[i] = aviones[j];
+						aviones[j] = aux;
+					}
 				}
 			}
 		}
@@ -269,7 +287,7 @@ int ordenarAviones(eAvion aviones[], int lenAviones){
 
 	return exito;
 }
-*/
+
 
 
 
@@ -328,6 +346,193 @@ int obtenerAvionPorId(eAvion aviones[], int lenAviones, int idAvion, eAvion* pAv
 	return exito;
 }
 */
+
+
+
+//INFORMES
+int mostrarAvionesPorAerolinea(eAvion aviones[], int lenAviones, eAerolinea aerolineas[], int lenAerolineas, eTipo tipos[], int lenTipos){
+	int success = 0;
+	int lenColumns = 4;
+	char columns[4][31] = { "ID", "AEROLINEA", "TIPO", "CAPACIDAD" };
+	int lengths[4] = { 6, 22, 22, 11 };
+	int hay = 0;
+	int idAerolinea;
+	char descripcionAerolinea[20];
+
+	if (aviones != NULL && lenAviones > 0 && aerolineas != NULL && lenAerolineas > 0 && tipos != NULL && lenTipos > 0){
+
+		mostrarAerolineas(aerolineas, lenAerolineas);
+
+		getInt("Ingrese ID de Aerolinea: ", &idAerolinea);
+		while (!validarIdAerolinea(aerolineas, lenAerolineas, idAerolinea)){
+			getInt("ID invalido. Ingrese ID de Aerolinea: ", &idAerolinea);
+		}
+
+		printHeader(columns, lengths, lenColumns);
+		for (int i = 0; i < lenAviones; i++){
+			if (!aviones[i].isEmpty && aviones[i].idAerolinea == idAerolinea){
+				mostrarAvion(aviones[i], aerolineas, lenAerolineas, tipos, lenTipos);
+				printFooter(lengths, lenColumns);
+				hay = 1;
+			}
+		}
+
+		if (hay){
+			puts(""); //DEJO ESPACIO EN BLANCO
+		}
+		else{
+			cargarDescripcionAerolinea(aerolineas, lenAerolineas, idAerolinea, descripcionAerolinea);
+			printf("No hay aviones para mostrar en la aerolinea: %s\n", descripcionAerolinea);
+		}
+
+		success = 1;
+	}
+
+	return success;
+}
+
+
+int mostrarAvionesPorTipo(eAvion aviones[], int lenAviones, eAerolinea aerolineas[], int lenAerolineas, eTipo tipos[], int lenTipos){
+	int success = 0;
+	int lenColumns = 4;
+	char columns[4][31] = { "ID", "AEROLINEA", "TIPO", "CAPACIDAD" };
+	int lengths[4] = { 6, 22, 22, 11 };
+	int hay = 0;
+	int idTipo;
+	char descripcionTipo[20];
+
+	if (aviones != NULL && lenAviones > 0 && aerolineas != NULL && lenAerolineas > 0 && tipos != NULL && lenTipos > 0){
+
+		mostrarTipos(tipos, lenTipos);
+
+		getInt("Ingrese ID de Tipo: ", &idTipo);
+		while (!validarIdTipo(tipos, lenTipos, idTipo)){
+			getInt("ID invalido. Ingrese ID de Tipo: ", &idTipo);
+		}
+
+		printHeader(columns, lengths, lenColumns);
+		for (int i = 0; i < lenAviones; i++){
+			if (!aviones[i].isEmpty && aviones[i].idTipo == idTipo){
+				mostrarAvion(aviones[i], aerolineas, lenAerolineas, tipos, lenTipos);
+				printFooter(lengths, lenColumns);
+				hay = 1;
+			}
+		}
+
+		if (hay){
+			puts(""); //DEJO ESPACIO EN BLANCO
+		}
+		else{
+			cargarDescripcionAerolinea(aerolineas, lenAerolineas, idTipo, descripcionTipo);
+			printf("No hay aviones para mostrar con el tipo: %s\n", descripcionTipo);
+		}
+
+		success = 1;
+	}
+
+	return success;
+}
+
+
+
+int mostrarPorcentajeAvionesPorAerolinea(eAvion aviones[], int lenAviones, eAerolinea aerolineas[], int lenAerolineas, int idAerolinea, int idTipo){
+	int success = 0;
+	char descripcionAerolinea[20];
+	int contadorAvionesDelTipo = 0;
+	int contadorAvionesDeAerolinea = 0;
+	float porcentaje;
+
+	if (aviones != NULL && lenAviones > 0 && aerolineas != NULL && lenAerolineas > 0){
+		for (int i = 0; i < lenAviones; i++){
+			if (!aviones[i].isEmpty && aviones[i].idAerolinea == idAerolinea){
+				contadorAvionesDeAerolinea++;
+				if (aviones[i].idTipo == idTipo){
+					contadorAvionesDelTipo++;
+				}
+			}
+		}
+
+		cargarDescripcionAerolinea(aerolineas, lenAerolineas, idAerolinea, descripcionAerolinea);
+		if (contadorAvionesDelTipo > 0 && contadorAvionesDeAerolinea > 0){
+			porcentaje = (float)contadorAvionesDelTipo / contadorAvionesDeAerolinea * 100;
+			printf("Porcentaje de aviones JET en %s: %.2f porciento\n\n", descripcionAerolinea, porcentaje);
+		}
+		else{
+			printf("No hay aviones JET en la aerolinea: %s\n\n", descripcionAerolinea);
+		}
+
+		success  = 1;
+	}
+
+	return success;
+}
+
+
+//3
+int mostrarPorcentajeAvionesJetAerolineas(eAvion aviones[], int lenAviones, eAerolinea aerolineas[], int lenAerolineas){
+	int success = 0;
+	int idTipoJet = 3000;
+
+	if (aviones != NULL && lenAviones > 0 && aerolineas != NULL && lenAerolineas > 0){
+
+		puts("    *** PORCENTAJE AVIONES JET POR AEROLINEA ***     ");
+		for (int i = 0; i < lenAerolineas; i++){
+			if (!aerolineas[i].isEmpty){
+				mostrarPorcentajeAvionesPorAerolinea(aviones, lenAviones, aerolineas, lenAerolineas, aerolineas[i].id, idTipoJet);
+			}
+		}
+
+		success  = 1;
+	}
+
+	return success;
+}
+
+
+
+
+//6
+int mostrarAerolineaConMenosAviones(eAvion aviones[], int lenAviones, eAerolinea aerolineas[], int lenAerolineas){
+	int exito = 0;
+	int cantidades[lenAerolineas];
+	int menorCantidad;
+
+	if (aviones != NULL && lenAviones > 0 && aerolineas != NULL && lenAerolineas > 0){
+		puts("    *** AEROLINEA CON MENOS AVIONES ***     ");
+
+		for (int i = 0; i < lenAerolineas; i++){
+			cantidades[i] = 0;
+
+			for (int j = 0; j < lenAviones; j++){
+				if (!aviones[j].isEmpty && aviones[j].idAerolinea == aerolineas[i].id){
+					cantidades[i]++;
+				}
+			}
+		}
+
+		for (int i = 0; i < lenAerolineas; i++){
+			if (i == 0 || cantidades[i] < menorCantidad){
+				menorCantidad = cantidades[i];
+			}
+		}
+
+		//YA TENGO LA CANTIDAD MENOR
+		for (int i = 0; i < lenAerolineas; i++){
+			if (cantidades[i] == menorCantidad){
+				printf("Aerolinea: %s\n", aerolineas[i].descripcion);
+			}
+		}
+		puts("");
+
+		exito  = 1;
+	}
+
+	return exito;
+}
+
+
+
+
 
 
 //VALIDACIONES

@@ -68,7 +68,7 @@ int main(void) {
 		//hardcodeAerolineas(aerolineas, LEN_AEROLINEAS, 5, &idAerolinea);
 		//hardcodeTipos(tipos, LEN_TIPOS, 4, &idTipo);
 		//hardcodeDestinos(destinos, LEN_DESTINOS, 4, &idDestino);
-		hardcodeAviones(aviones, LEN_AVIONES, 5, &idAvion);
+		hardcodeAviones(aviones, LEN_AVIONES, 10, &idAvion);
 
 
 		do{
@@ -122,8 +122,17 @@ int main(void) {
 				case optListarVuelos:
 					mostrarVuelos(vuelos, LEN_VUELOS, aviones, LEN_AVIONES, aerolineas, LEN_AEROLINEAS, tipos, LEN_TIPOS, destinos, LEN_DESTINOS);
 					break;
-				case optMostarAvionesPorId:
-					mostrarVuelos(vuelos, LEN_VUELOS, aviones, LEN_AVIONES, aerolineas, LEN_AEROLINEAS, tipos, LEN_TIPOS, destinos, LEN_DESTINOS);
+				case optMostarAvionesPorAerolinea:
+					mostrarAvionesPorAerolinea(aviones, LEN_AVIONES, aerolineas, LEN_AEROLINEAS, tipos, LEN_TIPOS);
+					break;
+				case optMostarAvionesPorTipo:
+					mostrarAvionesPorTipo(aviones, LEN_AVIONES, aerolineas, LEN_AEROLINEAS, tipos, LEN_TIPOS);
+					break;
+				case optMostrarPorcentajeAvionesJetAerolineas:
+					mostrarPorcentajeAvionesJetAerolineas(aviones, LEN_AVIONES, aerolineas, LEN_AEROLINEAS);
+					break;
+				case optMostrarAerolineaConMenosAviones:
+					mostrarAerolineaConMenosAviones(aviones, LEN_AVIONES, aerolineas, LEN_AEROLINEAS);
 					break;
 				case optSalirMainMenu:
 					seguir = 0;

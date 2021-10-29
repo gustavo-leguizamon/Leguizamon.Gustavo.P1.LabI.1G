@@ -50,6 +50,7 @@ int mostrarAerolineas(eAerolinea aerolineas[], int lenAerolineas);
 int cargarDescripcionAerolinea(eAerolinea aerolineas[], int lenAerolineas, int idAerolinea, char descripcion[]);
 
 
+
 //VALIDACIONES
 
 /**

@@ -12,7 +12,12 @@ enum optionsMenu{
 	optAltaVuelo,
 	optListarVuelos,
 
-	optMostarAvionesPorId,
+	optMostarAvionesPorAerolinea,
+	optMostarAvionesPorTipo,
+	optMostrarPorcentajeAvionesJetAerolineas,
+
+
+	optMostrarAerolineaConMenosAviones,
 
 	optSalirMainMenu = 100
 };

@@ -89,6 +89,9 @@ int cargarDescripcionAerolinea(eAerolinea aerolineas[], int lenAerolineas, int i
 
 
 
+
+
+
 //VALIDACIONES
 int validarIdAerolinea(eAerolinea aerolineas[], int lenAerolineas, int id){
 	int success = 0;
