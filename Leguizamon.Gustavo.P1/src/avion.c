@@ -90,6 +90,8 @@ int altaAvion(eAvion aviones[], int lenAviones, eAerolinea aerolineas[], int len
 			auxAvion.isEmpty = 0;
 
 			aviones[indiceLibre] = auxAvion;
+
+			exito = 1;
 		}
 	}
 
@@ -102,6 +104,9 @@ int modificarAvion(eAvion aviones[], int lenAviones, eAerolinea aerolineas[], in
 	int indiceAvion;
 	int id;
 	char confirma = 'n';
+	int lenColumns = 4;
+	char columns[4][31] = { "ID", "AEROLINEA", "TIPO", "CAPACIDAD" };
+	int lengths[4] = { 6, 22, 22, 11 };
 
 	if (aviones != NULL && lenAviones > 0 && aerolineas != NULL && lenAerolineas > 0 && tipos != NULL && lenTipos > 0){
 		puts("     *** MODIFICAR AVION ***          \n");
@@ -122,9 +127,12 @@ int modificarAvion(eAvion aviones[], int lenAviones, eAerolinea aerolineas[], in
 			printf("No existe avion con id: %d\n", id);
 		}
 		else{
+			printHeader(columns, lengths, lenColumns);
 			mostrarAvion(aviones[indiceAvion], aerolineas, lenAerolineas, tipos, lenTipos);
+			printFooter(lengths, lenColumns);
 			getChar("Confirma la modificacion? Ingrese s/n: ", &confirma);
 			if (confirma == 's'){
+				puts("");
 				switch(menuModificacion()){
 					case optTipo:
 						mostrarTipos(tipos, lenTipos);
@@ -132,6 +140,7 @@ int modificarAvion(eAvion aviones[], int lenAviones, eAerolinea aerolineas[], in
 						while (!validarIdTipo(tipos, lenTipos, aviones[indiceAvion].idTipo)){
 							getInt("ID invalido. Ingrese ID tipo: ", &aviones[indiceAvion].idTipo);
 						}
+						exito = 1;
 						break;
 					case optCapacidad:
 						mostrarTipos(tipos, lenTipos);
@@ -139,13 +148,12 @@ int modificarAvion(eAvion aviones[], int lenAviones, eAerolinea aerolineas[], in
 						while (!validarCapacidad(aviones[indiceAvion].capacidad)){
 							getInt("Capacidad invalida. Ingrese capacidad entre 10 y 300: ", &aviones[indiceAvion].capacidad);
 						}
+						exito = 1;
 						break;
 					default:
 						puts("Opcion invalida");
 						break;
 				}
-
-				exito = 1;
 			}
 			else{
 				puts("Modificacion cancelada por el usuario");
@@ -162,6 +170,9 @@ int bajaAvion(eAvion aviones[], int lenAviones, eAerolinea aerolineas[], int len
 	int indiceAvion;
 	int id;
 	char confirma = 'n';
+	int lenColumns = 4;
+	char columns[4][31] = { "ID", "AEROLINEA", "TIPO", "CAPACIDAD" };
+	int lengths[4] = { 6, 22, 22, 11 };
 
 	if (aviones != NULL && lenAviones > 0 && aerolineas != NULL && lenAerolineas > 0 && tipos != NULL && lenTipos > 0){
 		puts("     *** BAJA AVION ***          \n\n");
@@ -177,14 +188,16 @@ int bajaAvion(eAvion aviones[], int lenAviones, eAerolinea aerolineas[], int len
 			printf("No existe avion con ID: %d\n", id);
 		}
 		else{
+			printHeader(columns, lengths, lenColumns);
 			mostrarAvion(aviones[indiceAvion], aerolineas, lenAerolineas, tipos, lenTipos);
+			printFooter(lengths, lenColumns);
 			getChar("Confirma la BAJA? Ingrese s/n: ", &confirma);
 			if (confirma == 's'){
 				aviones[indiceAvion].isEmpty = 1;
 				exito = 1;
 			}
 			else{
-				puts("Baja cancelada por el usuario");
+				puts("Baja cancelada por el usuario\n");
 			}
 		}
 	}
@@ -269,10 +282,6 @@ int buscarAvionPorId(eAvion aviones[], int lenAviones, int id){
 				indiceEncontrado = i;
 				break;
 			}
-		}
-
-		if (indiceEncontrado == -1){
-			printf("No existe avion con ID: %d\n", id);
 		}
 	}
 
