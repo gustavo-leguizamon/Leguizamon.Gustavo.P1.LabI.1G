@@ -94,6 +94,27 @@ int cargarDescripcionDestino(eDestino destinos[], int lenDestinos, int idDestino
 	return success;
 }
 
+int cargarPrecioDestino(eDestino destinos[], int lenDestinos, int idDestino, float* pPrecio){
+	int success = 0;
+	int flag = 1;
+
+	if (destinos != NULL && lenDestinos > 0 && pPrecio != NULL){
+		success = 1;
+		for (int i = 0; i < lenDestinos; i++){
+			if (destinos[i].id == idDestino){
+				*pPrecio = destinos[i].precio;
+				flag = 0;
+				break;
+			}
+		}
+		if (flag){
+			success = -1;
+		}
+	}
+
+	return success;
+}
+
 
 
 int validarIdDestino(eDestino destinos[], int lenDestinos, int id){

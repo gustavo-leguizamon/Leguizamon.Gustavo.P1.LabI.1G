@@ -90,6 +90,7 @@ void mostrarVuelo(eVuelo vuelo, eAvion aviones[], int lenAviones, eAerolinea aer
 	char descripcionAerolinea[20];
 	char descripcionTipo[20];
 	char descripcionDestino[20];
+	float precioDestino;
 	int indiceAvion;
 
 	indiceAvion = buscarAvionPorId(aviones, lenAviones, vuelo.idAvion);
@@ -99,15 +100,17 @@ void mostrarVuelo(eVuelo vuelo, eAvion aviones[], int lenAviones, eAerolinea aer
 	else{
 		if (cargarDescripcionAerolinea(aerolineas, lenAerolineas, aviones[indiceAvion].idAerolinea, descripcionAerolinea) == 1 &&
 			cargarDescripcionTipo(tipos, lenTipos, aviones[indiceAvion].idTipo, descripcionTipo) == 1 &&
-			cargarDescripcionDestino(destinos, lenDestinos, vuelo.idDestino, descripcionDestino) == 1){
-			printf("| %04d | %02d/%02d/%04d | %-20s | %-20s | %9d | %-20s |\n", vuelo.id,
-																				vuelo.fecha.dia,
-																				vuelo.fecha.mes,
-																				vuelo.fecha.anio,
-																			    descripcionAerolinea,
-																			    descripcionTipo,
-																			    aviones[indiceAvion].capacidad,
-																				descripcionDestino);
+			cargarDescripcionDestino(destinos, lenDestinos, vuelo.idDestino, descripcionDestino) == 1 &&
+			cargarPrecioDestino(destinos, lenDestinos, vuelo.idDestino, &precioDestino) == 1){
+			printf("| %04d | %02d/%02d/%04d | %-20s | %-20s | %9d | %-20s | $%13.2f |\n", vuelo.id,
+																						vuelo.fecha.dia,
+																						vuelo.fecha.mes,
+																						vuelo.fecha.anio,
+																						descripcionAerolinea,
+																						descripcionTipo,
+																						aviones[indiceAvion].capacidad,
+																						descripcionDestino,
+																						precioDestino);
 			//puts("|_______|_______________________|_______|_______|__________|_______________________|");
 		}
 	}
@@ -117,9 +120,9 @@ void mostrarVuelo(eVuelo vuelo, eAvion aviones[], int lenAviones, eAerolinea aer
 
 int mostrarVuelos(eVuelo vuelos[], int lenVuelos, eAvion aviones[], int lenAviones, eAerolinea aerolineas[], int lenAerolineas, eTipo tipos[], int lenTipos, eDestino destinos[], int lenDestinos){
 	int success = 0;
-	int lenColumns = 6;
-	char columns[6][31] = { "ID", "FECHA", "AEROLINEA", "TIPO AVION", "CAPACIDAD", "DESTINO" };
-	int lengths[6] = { 6, 12, 22, 22, 11, 22 };
+	int lenColumns = 7;
+	char columns[7][31] = { "ID", "FECHA", "AEROLINEA", "TIPO AVION", "CAPACIDAD", "DESTINO", "COSTO PASAJE" };
+	int lengths[7] = { 6, 12, 22, 22, 11, 22, 13 };
 	int hay = 0;
 
 	if (vuelos != NULL && lenVuelos > 0 && aviones != NULL && lenAviones > 0 && aerolineas != NULL && lenAerolineas > 0 && tipos != NULL && lenTipos > 0){

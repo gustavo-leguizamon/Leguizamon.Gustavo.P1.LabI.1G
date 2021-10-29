@@ -27,4 +27,6 @@ int mostrarDestinos(eDestino destinos[], int lenDestinos);
 
 int cargarDescripcionDestino(eDestino destinos[], int lenDestinos, int idDestino, char descripcion[]);
 
+int cargarPrecioDestino(eDestino destinos[], int lenDestinos, int idDestino, float* pPrecio);
+
 int validarIdDestino(eDestino destinos[], int lenDestinos, int id);
