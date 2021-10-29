@@ -17,8 +17,11 @@ int mostrarTipos(eTipo tipos[], int lenTipos){
 			hay = 1;
 		}
 
-		if (!hay){
-			printf("No hay tipos par mostrar\n");
+		if (hay){
+			puts(""); //DEJO ESPACIO EN BLANCO
+		}
+		else{
+			puts("No hay tipos par mostrar\n");
 		}
 
 		success = 1;

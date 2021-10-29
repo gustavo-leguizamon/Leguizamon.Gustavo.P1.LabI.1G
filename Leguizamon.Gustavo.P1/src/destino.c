@@ -1,6 +1,19 @@
 
 #include "destino.h"
 
+int inicializarDestinos(eDestino destinos[], int lenDestinos){
+	int exito = 0;
+
+	if (destinos != NULL && lenDestinos > 0){
+		for (int i = 0; i < lenDestinos; i++){
+			destinos[i].isEmpty = 1;
+		}
+
+		exito = 1;
+	}
+
+	return exito;
+}
 
 void mostrarDestino(eDestino destino){
 	printf("| %04d | %-25s | $%11.2f |\n", destino.id,
@@ -18,14 +31,18 @@ int mostrarDestinos(eDestino destinos[], int lenDestinos){
 	if (destinos != NULL && lenDestinos > 0){
 		printHeader(columns, lengths, lenColumns);
 		for (int i = 0; i < lenDestinos; i++){
-			//printf("| %4d | %-20s | %-20s | %3d |\n", aviones[i].id, aviones[i].descripcion);
-			mostrarDestino(destinos[i]);
-			printFooter(lengths, lenColumns);
-			hay = 1;
+			if (!destinos[i].isEmpty){
+				mostrarDestino(destinos[i]);
+				printFooter(lengths, lenColumns);
+				hay = 1;
+			}
 		}
 
-		if (!hay){
-			printf("No hay destinos par mostrar\n");
+		if (hay){
+			puts(""); //DEJO ESPACIO EN BLANCO
+		}
+		else{
+			puts("No hay destinos par mostrar\n");
 		}
 
 		success = 1;

@@ -49,7 +49,8 @@ int main(void) {
 
 	if (inicializarAviones(aviones, LEN_AVIONES) &&
 		inicializarVuelos(vuelos, LEN_VUELOS) &&
-		inicializarAerolineas(aerolineas, LEN_AEROLINEAS)){
+		inicializarAerolineas(aerolineas, LEN_AEROLINEAS) &&
+		inicializarDestinos(destinos, LEN_DESTINOS)){
 		do{
 			//system("clear");
 
@@ -77,6 +78,9 @@ int main(void) {
 					else{
 						puts("Baja exitosa!!!\n");
 					}
+					break;
+				case optListarAviones:
+					mostrarAviones(aviones, LEN_AVIONES, aerolineas, LEN_AEROLINEAS, tipos, LEN_TIPOS);
 					break;
 				case optListarAerolineas:
 					mostrarAerolineas(aerolineas, LEN_AEROLINEAS);

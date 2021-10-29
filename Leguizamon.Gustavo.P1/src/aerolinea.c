@@ -6,7 +6,7 @@ int inicializarAerolineas(eAerolinea aerolineas[], int lenAerolineas){
 
 	if (aerolineas != NULL && lenAerolineas > 0){
 		for (int i = 0; i < lenAerolineas; i++){
-			aerolineas[i].isEmpty = 0;
+			aerolineas[i].isEmpty = 1;
 		}
 
 		exito = 1;
@@ -32,8 +32,11 @@ int mostrarAerolineas(eAerolinea aerolineas[], int lenAerolineas){
 			}
 		}
 
-		if (!hay){
-			printf("No hay aerolineas par mostrar\n");
+		if (hay){
+			puts(""); //DEJO ESPACIO EN BLANCO
+		}
+		else{
+			puts("No hay aerolineas par mostrar\n");
 		}
 
 		success = 1;

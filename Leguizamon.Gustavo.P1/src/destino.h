@@ -10,10 +10,12 @@ typedef struct {
 	int id;
 	char descripcion[25];
 	float precio;
+	int isEmpty;
 } eDestino;
 
 #endif /* DESTINO_H_ */
 
+int inicializarDestinos(eDestino destinos[], int lenDestinos);
 
 void mostrarDestino(eDestino destino);
 

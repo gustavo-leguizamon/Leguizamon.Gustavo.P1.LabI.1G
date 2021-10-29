@@ -7,7 +7,7 @@ int inicializarVuelos(eVuelo vuelos[], int lenVuelos){
 
 	if (vuelos != NULL && lenVuelos > 0){
 		for (int i = 0; i < lenVuelos; i++){
-			vuelos[i].isEmpty = 0;
+			vuelos[i].isEmpty = 1;
 		}
 
 		exito = 1;

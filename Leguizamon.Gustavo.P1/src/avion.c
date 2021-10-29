@@ -6,7 +6,7 @@ int inicializarAviones(eAvion aviones[], int lenAviones){
 
 	if (aviones != NULL && lenAviones > 0){
 		for (int i = 0; i < lenAviones; i++){
-			aviones[i].isEmpty = 0;
+			aviones[i].isEmpty = 1;
 		}
 
 		exito = 1;
@@ -203,8 +203,11 @@ int mostrarAviones(eAvion aviones[], int lenAviones, eAerolinea aerolineas[], in
 			}
 		}
 
-		if (!hay){
-			printf("No hay aviones par mostrar\n");
+		if (hay){
+			puts(""); //DEJO ESPACIO EN BLANCO
+		}
+		else{
+			puts("No hay aviones par mostrar\n");
 		}
 
 		success = 1;
