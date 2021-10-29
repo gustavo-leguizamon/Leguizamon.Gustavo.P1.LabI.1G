@@ -86,13 +86,13 @@ int getDate(char message[], eFecha* input){
 	if (message != NULL && input != NULL){
 		printf("%s", message);
 		fflush(stdin);
-		success = scanf("%d/%d/%d", input->dia, input->mes, input->anio);
+		success = scanf("%d/%d/%d", &input->dia, &input->mes, &input->anio);
 
 		while (success < 3){
 			puts("Dato invalido. Debe ingresar una fecha en el formato dd/mm/aaaa.");
 			printf("%s", message);
 			fflush(stdin);
-			success = scanf("%d/%d/%d", input->dia, input->mes, input->anio);
+			success = scanf("%d/%d/%d", &input->dia, &input->mes, &input->anio);
 		}
 
 		success = 1;
@@ -100,3 +100,5 @@ int getDate(char message[], eFecha* input){
 
 	return success;
 }
+
+

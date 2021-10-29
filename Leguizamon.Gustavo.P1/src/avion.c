@@ -288,6 +288,47 @@ int buscarAvionPorId(eAvion aviones[], int lenAviones, int id){
 	return indiceEncontrado;
 }
 
+/*
+int cargarCapacidadAvion(eAvion aviones[], int lenAvion, int idAvion, int* pCapacidad){
+	int success = 0;
+	int flag = 1;
+
+	if (aviones != NULL && lenAvion > 0 && pCapacidad != NULL){
+		success = 1;
+		for (int i = 0; i < lenAvion; i++){
+			if (aviones[i].id == idAvion){
+				*pCapacidad = aviones[i].capacidad;
+				flag = 0;
+				break;
+			}
+		}
+		if (flag){
+			success = -1;
+		}
+	}
+
+	return success;
+}
+*/
+
+/*
+int obtenerAvionPorId(eAvion aviones[], int lenAviones, int idAvion, eAvion* pAvion){
+	int exito = 0;
+
+	if (aviones != NULL && lenAviones > 0 && pAvion != NULL){
+		for (int i = 0; i < lenAviones; i++){
+			if (!aviones[i].isEmpty && aviones[i].id == idAvion){
+				*pAvion = aviones[i];
+			}
+		}
+
+		exito = 1;
+	}
+
+	return exito;
+}
+*/
+
 
 //VALIDACIONES
 int validarCapacidad(int capacidad){

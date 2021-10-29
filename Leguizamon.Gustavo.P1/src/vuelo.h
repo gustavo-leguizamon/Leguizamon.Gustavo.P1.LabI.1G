@@ -23,6 +23,8 @@ int inicializarVuelos(eVuelo vuelos[], int lenVuelos);
 
 int buscarPosicionLibreVuelo(eVuelo vuelos[], int lenVuelos);
 
-int altaVuelo(eVuelo vuelos[], int lenVuelos, eAvion aviones[], int lenAviones, eAerolinea aerolineas[], int lenAerolineas, eTipo tipos[], int lenTipos, eDestino destinos[], int lenDestinos, int* pIdAvion);
+int altaVuelo(eVuelo vuelos[], int lenVuelos, eAvion aviones[], int lenAviones, eAerolinea aerolineas[], int lenAerolineas, eTipo tipos[], int lenTipos, eDestino destinos[], int lenDestinos, int* pIdVuelo);
 
-//int mostrarVuelos();
+void mostrarVuelo(eVuelo vuelo, eAvion aviones[], int lenAviones, eAerolinea aerolineas[], int lenAerolineas, eTipo tipos[], int lenTipos, eDestino destinos[], int lenDestinos);
+
+int mostrarVuelos(eVuelo vuelos[], int lenVuelos, eAvion aviones[], int lenAviones, eAerolinea aerolineas[], int lenAerolineas, eTipo tipos[], int lenTipos, eDestino destinos[], int lenDestinos);

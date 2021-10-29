@@ -73,6 +73,28 @@ int mostrarDestinos(eDestino destinos[], int lenDestinos){
 }
 
 
+int cargarDescripcionDestino(eDestino destinos[], int lenDestinos, int idDestino, char descripcion[]){
+	int success = 0;
+	int flag = 1;
+
+	if (destinos != NULL && lenDestinos > 0 && descripcion != NULL){
+		success = 1;
+		for (int i = 0; i < lenDestinos; i++){
+			if (destinos[i].id == idDestino){
+				strcpy(descripcion, destinos[i].descripcion);
+				flag = 0;
+				break;
+			}
+		}
+		if (flag){
+			success = -1;
+		}
+	}
+
+	return success;
+}
+
+
 
 int validarIdDestino(eDestino destinos[], int lenDestinos, int id){
 	int success = 0;

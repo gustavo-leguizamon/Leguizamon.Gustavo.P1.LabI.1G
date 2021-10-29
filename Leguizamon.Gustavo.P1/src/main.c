@@ -57,6 +57,7 @@ int main(void) {
 	int idDestino = 5000;
 	*/
 	int idAvion = 7000;
+	int idVuelo = 9000;
 	int seguir = 1;
 
 
@@ -75,16 +76,16 @@ int main(void) {
 
 			switch(menu()){
 				case optAltaAvion:
-					if (!altaAvion(aviones, LEN_AVIONES, aerolineas, LEN_AEROLINEAS, tipos, LEN_TIPOS, &idAvion)){
-						printf("No se pudo realizar el alta de avion\n");
+					if (altaAvion(aviones, LEN_AVIONES, aerolineas, LEN_AEROLINEAS, tipos, LEN_TIPOS, &idAvion)){
+						puts("Alta de avion exitosa!!!\n");
 					}
 					else{
-						printf("Alta de avion exitosa!!!\n\n");
+						puts("No se pudo realizar el alta de avion");
 					}
 					break;
 				case optModificarAvion:
 					if (modificarAvion(aviones, LEN_AVIONES, aerolineas, LEN_AEROLINEAS, tipos, LEN_TIPOS)){
-						puts("Modificacion de avion exitosa!!!");
+						puts("Modificacion de avion exitosa!!!\n");
 					}
 					else{
 						puts("No se pudo modificar");
@@ -92,10 +93,10 @@ int main(void) {
 					break;
 				case optBajaAvion:
 					if (!bajaAvion(aviones, LEN_AVIONES, aerolineas, LEN_AEROLINEAS, tipos, LEN_TIPOS)){
-						puts("No se pude realizar la baja");
+						puts("Baja exitosa!!!\n");
 					}
 					else{
-						puts("Baja exitosa!!!\n");
+						puts("No se pude realizar la baja");
 					}
 					break;
 				case optListarAviones:
@@ -109,6 +110,17 @@ int main(void) {
 					break;
 				case optListarDestinos:
 					mostrarDestinos(destinos, LEN_DESTINOS);
+					break;
+				case optAltaVuelo:
+					if (altaVuelo(vuelos, LEN_VUELOS, aviones, LEN_AVIONES, aerolineas, LEN_AEROLINEAS, tipos, LEN_TIPOS, destinos, LEN_DESTINOS, &idVuelo)){
+						puts("Alta de vuelo exitoso!!!\n");
+					}
+					else{
+						puts("No se pudo realizar el alta de vuelo");
+					}
+					break;
+				case optListarVuelos:
+					mostrarVuelos(vuelos, LEN_VUELOS, aviones, LEN_AVIONES, aerolineas, LEN_AEROLINEAS, tipos, LEN_TIPOS, destinos, LEN_DESTINOS);
 					break;
 				case optSalirMainMenu:
 					seguir = 0;

@@ -25,4 +25,6 @@ void mostrarDestino(eDestino destino);
 
 int mostrarDestinos(eDestino destinos[], int lenDestinos);
 
+int cargarDescripcionDestino(eDestino destinos[], int lenDestinos, int idDestino, char descripcion[]);
+
 int validarIdDestino(eDestino destinos[], int lenDestinos, int id);
