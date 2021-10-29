@@ -131,6 +131,9 @@ int main(void) {
 				case optMostrarPorcentajeAvionesJetAerolineas:
 					mostrarPorcentajeAvionesJetAerolineas(aviones, LEN_AVIONES, aerolineas, LEN_AEROLINEAS);
 					break;
+				case optMostrarAerolineaConMasPasajeros:
+					mostrarAerolineaConMasPasajeros(aviones, LEN_AVIONES, aerolineas, LEN_AEROLINEAS);
+					break;
 				case optMostrarAerolineaConMenosAviones:
 					mostrarAerolineaConMenosAviones(aviones, LEN_AVIONES, aerolineas, LEN_AEROLINEAS);
 					break;

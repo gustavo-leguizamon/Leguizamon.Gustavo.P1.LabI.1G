@@ -489,13 +489,52 @@ int mostrarPorcentajeAvionesJetAerolineas(eAvion aviones[], int lenAviones, eAer
 }
 
 
+//5
+int mostrarAerolineaConMasPasajeros(eAvion aviones[], int lenAviones, eAerolinea aerolineas[], int lenAerolineas){
+	int exito = 0;
+	int cantidades[lenAerolineas];
+	int mayorCantidad = 0;
+
+	if (aviones != NULL && lenAviones > 0 && aerolineas != NULL && lenAerolineas > 0){
+		puts("    *** AEROLINEA CON MAS PASAJEROS ***     ");
+
+		for (int i = 0; i < lenAerolineas; i++){
+			cantidades[i] = 0;
+
+			for (int j = 0; j < lenAviones; j++){
+				if (!aviones[j].isEmpty && aviones[j].idAerolinea == aerolineas[i].id && aviones[j].capacidad > cantidades[i]){
+					cantidades[i] += aviones[j].capacidad;
+				}
+			}
+		}
+
+		for (int i = 0; i < lenAerolineas; i++){
+			if (i == 0 || cantidades[i] > mayorCantidad){
+				mayorCantidad = cantidades[i];
+			}
+		}
+
+		//YA TENGO LA CANTIDAD MENOR
+		for (int i = 0; i < lenAerolineas; i++){
+			if (cantidades[i] == mayorCantidad){
+				printf("Aerolinea: %s\n", aerolineas[i].descripcion);
+			}
+		}
+		puts("");
+
+		exito  = 1;
+	}
+
+	return exito;
+}
+
 
 
 //6
 int mostrarAerolineaConMenosAviones(eAvion aviones[], int lenAviones, eAerolinea aerolineas[], int lenAerolineas){
 	int exito = 0;
 	int cantidades[lenAerolineas];
-	int menorCantidad;
+	int menorCantidad = 0;
 
 	if (aviones != NULL && lenAviones > 0 && aerolineas != NULL && lenAerolineas > 0){
 		puts("    *** AEROLINEA CON MENOS AVIONES ***     ");

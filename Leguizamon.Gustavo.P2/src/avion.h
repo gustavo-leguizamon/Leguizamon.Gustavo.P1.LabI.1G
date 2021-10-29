@@ -157,6 +157,7 @@ int mostrarPorcentajeAvionesPorAerolinea(eAvion aviones[], int lenAviones, eAero
 
 int mostrarPorcentajeAvionesJetAerolineas(eAvion aviones[], int lenAviones, eAerolinea aerolineas[], int lenAerolineas);
 
+int mostrarAerolineaConMasPasajeros(eAvion aviones[], int lenAviones, eAerolinea aerolineas[], int lenAerolineas);
 
 int mostrarAerolineaConMenosAviones(eAvion aviones[], int lenAviones, eAerolinea aerolineas[], int lenAerolineas);
 

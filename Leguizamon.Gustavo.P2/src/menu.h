@@ -16,7 +16,7 @@ enum optionsMenu{
 	optMostarAvionesPorTipo,
 	optMostrarPorcentajeAvionesJetAerolineas,
 
-
+	optMostrarAerolineaConMasPasajeros,
 	optMostrarAerolineaConMenosAviones,
 
 	optSalirMainMenu = 100
