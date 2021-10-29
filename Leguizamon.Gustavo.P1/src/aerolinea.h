@@ -15,6 +15,8 @@ typedef struct {
 
 #endif /* AEROLINEA_H_ */
 
+//int hardcodeAerolineas(eAerolinea aerolineas[], int lenAerolineas, int cantidad, int* pId);
+
 int inicializarAerolineas(eAerolinea aerolineas[], int lenAerolineas);
 
 int mostrarAerolineas(eAerolinea aerolineas[], int lenAerolineas);

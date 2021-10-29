@@ -42,21 +42,40 @@ int main(void) {
 			{ 5003, "Amsterdam", 95600 }
 	};
 
+
+	/*
+	eAerolinea aerolineas[LEN_AEROLINEAS];
+	eTipo tipos[LEN_TIPOS];
+	eDestino destinos[LEN_DESTINOS];
+	*/
 	eAvion aviones[LEN_AVIONES];
 	eVuelo vuelos[LEN_VUELOS];
-	int nextIdAvion = 2000;
+
+	/*
+	int idAerolinea = 1000;
+	int idTipo = 3000;
+	int idDestino = 5000;
+	*/
+	int idAvion = 7000;
 	int seguir = 1;
 
+
 	if (inicializarAviones(aviones, LEN_AVIONES) &&
-		inicializarVuelos(vuelos, LEN_VUELOS) &&
-		inicializarAerolineas(aerolineas, LEN_AEROLINEAS) &&
-		inicializarDestinos(destinos, LEN_DESTINOS)){
+		inicializarVuelos(vuelos, LEN_VUELOS)){
+
+		//HARDCODES
+		//hardcodeAerolineas(aerolineas, LEN_AEROLINEAS, 5, &idAerolinea);
+		//hardcodeTipos(tipos, LEN_TIPOS, 4, &idTipo);
+		//hardcodeDestinos(destinos, LEN_DESTINOS, 4, &idDestino);
+		hardcodeAviones(aviones, LEN_AVIONES, 5, &idAvion);
+
+
 		do{
 			//system("clear");
 
 			switch(menu()){
 				case optAltaAvion:
-					if (!altaAvion(aviones, LEN_AVIONES, aerolineas, LEN_AEROLINEAS, tipos, LEN_TIPOS, &nextIdAvion)){
+					if (!altaAvion(aviones, LEN_AVIONES, aerolineas, LEN_AEROLINEAS, tipos, LEN_TIPOS, &idAvion)){
 						printf("No se pudo realizar el alta de avion\n");
 					}
 					else{

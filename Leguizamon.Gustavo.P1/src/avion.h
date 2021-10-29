@@ -19,6 +19,8 @@ typedef struct {
 
 #endif /* AVION_H_ */
 
+int hardcodeAviones(eAvion aviones[], int lenAviones, int cantidad, int* pId);
+
 int inicializarAviones(eAvion aviones[], int lenAviones);
 
 int buscarPosicionLibreAvion(eAvion personas[], int lenAviones);

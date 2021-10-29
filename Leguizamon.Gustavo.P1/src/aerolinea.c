@@ -1,6 +1,24 @@
 
 #include "aerolinea.h"
 
+/*
+int hardcodeAerolineas(eAerolinea aerolineas[], int lenAerolineas, int cantidad, int* pId){
+	int contador = -1;
+
+	if (aerolineas != NULL && lenAerolineas > 0 && cantidad >= 0 && cantidad <= lenAerolineas && pId != NULL){
+		contador = 0;
+		for (int i = 0; i < cantidad; i++){
+			aerolineas[i].id = *pId;
+			*pId += 1;
+			strcpy(aerolineas[i].descripcion, nombreAerolineas[i]);
+			aerolineas[i].isEmpty = 0;
+			contador++;
+		}
+	}
+
+	return contador;
+}
+
 int inicializarAerolineas(eAerolinea aerolineas[], int lenAerolineas){
 	int exito = 0;
 
@@ -14,6 +32,7 @@ int inicializarAerolineas(eAerolinea aerolineas[], int lenAerolineas){
 
 	return exito;
 }
+*/
 
 int mostrarAerolineas(eAerolinea aerolineas[], int lenAerolineas){
 	int success = 0;

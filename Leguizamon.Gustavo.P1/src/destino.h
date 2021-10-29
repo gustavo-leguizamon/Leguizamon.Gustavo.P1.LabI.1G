@@ -1,5 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include <string.h>
+
 
 #include "output.h"
 
@@ -14,6 +16,8 @@ typedef struct {
 } eDestino;
 
 #endif /* DESTINO_H_ */
+
+//int hardcodeDestinos(eDestino destinos[], int lenDestinos, int cantidad, int* pId);
 
 int inicializarDestinos(eDestino destinos[], int lenDestinos);
 

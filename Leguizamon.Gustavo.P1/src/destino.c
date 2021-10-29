@@ -1,6 +1,26 @@
 
 #include "destino.h"
 
+/*
+int hardcodeDestinos(eDestino destinos[], int lenDestinos, int cantidad, int* pId){
+	int contador = -1;
+
+	if (destinos != NULL && lenDestinos > 0 && cantidad >= 0 && cantidad <= lenDestinos && pId != NULL){
+		contador = 0;
+		for (int i = 0; i < cantidad; i++){
+			destinos[i].id = *pId;
+			*pId += 1;
+			strcpy(destinos[i].descripcion, nombreDestinos[i]);
+			destinos[i].precio  = precioDestinos[i];
+			destinos[i].isEmpty = 0;
+			contador++;
+		}
+	}
+
+	return contador;
+}
+
+
 int inicializarDestinos(eDestino destinos[], int lenDestinos){
 	int exito = 0;
 
@@ -14,6 +34,7 @@ int inicializarDestinos(eDestino destinos[], int lenDestinos){
 
 	return exito;
 }
+*/
 
 void mostrarDestino(eDestino destino){
 	printf("| %04d | %-25s | $%11.2f |\n", destino.id,

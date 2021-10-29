@@ -1,5 +1,26 @@
 #include "avion.h"
 
+#include "data.h"
+
+
+int hardcodeAviones(eAvion aviones[], int lenAviones, int cantidad, int* pId){
+	int contador = -1;
+
+	if (aviones != NULL && lenAviones > 0 && cantidad >= 0 && cantidad <= lenAviones && pId != NULL){
+		contador = 0;
+		for (int i = 0; i < cantidad; i++){
+			aviones[i].id = *pId;
+			*pId += 1;
+			aviones[i].idAerolinea  = idAerolineas[i];
+			aviones[i].idTipo = idTipos[i];
+			aviones[i].capacidad = capacidades[i];
+			aviones[i].isEmpty = 0;
+			contador++;
+		}
+	}
+
+	return contador;
+}
 
 int inicializarAviones(eAvion aviones[], int lenAviones){
 	int exito = 0;
@@ -178,7 +199,7 @@ void mostrarAvion(eAvion avion, eAerolinea aerolineas[], int lenAerolineas, eTip
 
 	if (cargarDescripcionAerolinea(aerolineas, lenAerolineas, avion.idAerolinea, descripcionAerolinea) == 1 &&
 		cargarDescripcionTipo(tipos, lenTipos, avion.idTipo, descripcionTipo) == 1){
-		printf("| %04d | %-20s | %-20s | %3d |\n", avion.id,
+		printf("| %04d | %-20s | %-20s | %9d |\n", avion.id,
 												   descripcionAerolinea,
 											       descripcionTipo,
 												   avion.capacidad);

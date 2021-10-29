@@ -1,5 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include <string.h>
 
 #include "output.h"
 
@@ -12,6 +13,8 @@ typedef struct {
 } eTipo;
 
 #endif /* TIPO_H_ */
+
+//int hardcodeTipos(eTipo tipos[], int lenTipos, int cantidad, int* pId);
 
 int mostrarTipos(eTipo tipos[], int lenTipos);
 

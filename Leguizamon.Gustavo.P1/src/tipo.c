@@ -2,6 +2,24 @@
 #include "tipo.h"
 
 
+/*
+int hardcodeTipos(eTipo tipos[], int lenTipos, int cantidad, int* pId){
+	int contador = -1;
+
+	if (tipos != NULL && lenTipos > 0 && cantidad >= 0 && cantidad <= lenTipos && pId != NULL){
+		contador = 0;
+		for (int i = 0; i < cantidad; i++){
+			tipos[i].id = *pId;
+			*pId += 1;
+			strcpy(tipos[i].descripcion, nombreTipos[i]);
+			contador++;
+		}
+	}
+
+	return contador;
+}
+*/
+
 int mostrarTipos(eTipo tipos[], int lenTipos){
 	int success = 0;
 	int lenColumns = 2;
